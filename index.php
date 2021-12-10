@@ -19,14 +19,10 @@
 
 <?php 
     function sendRecomendtoBuy($msgSendtoBuy){
-        global $arrayChatId;
-
         global $chat_id;
 
-        for ($i=0; $i < count($arrayChatId); $i++) { 
-            $api = "https://api.telegram.org/bot5073614406:AAEf7-M6-82p0WgCvS6RgzdMwiuorzMZnDo/sendmessage?chat_id=$chat_id&text=$msgSendtoBuy";
-            $konten = file_get_contents($api);
-        }
+        $api = "https://api.telegram.org/bot5073614406:AAEf7-M6-82p0WgCvS6RgzdMwiuorzMZnDo/sendmessage?chat_id=$chat_id&text=$msgSendtoBuy";
+        file_get_contents($api);
     }
 
     function splitRecomendtoBuy($arrayDataBuy){
@@ -73,12 +69,9 @@
     }
 
     function sendRecomendtoSell($msgSendtoSell){
-        global $arrayChatId;
         global $chat_id;
-        for ($i=0; $i < count($arrayChatId); $i++) { 
-            $api = "https://api.telegram.org/bot5073614406:AAEf7-M6-82p0WgCvS6RgzdMwiuorzMZnDo/sendmessage?chat_id=$chat_id&text=$msgSendtoSell";
-            $konten = file_get_contents($api);
-        }
+        $api = "https://api.telegram.org/bot5073614406:AAEf7-M6-82p0WgCvS6RgzdMwiuorzMZnDo/sendmessage?chat_id=$chat_id&text=$msgSendtoSell";
+        file_get_contents($api);
     }
 
     function splitRecomendtoSell($arrayDataSell){
