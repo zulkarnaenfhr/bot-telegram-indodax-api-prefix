@@ -29,8 +29,7 @@
         }
     }
 
-    function splitRecomendtoBuy(){
-        global $arrayDataBuy;
+    function splitRecomendtoBuy($arrayDataBuy){
         $msg1 = "";
         $msg2 = "";
         $msg3 = "";
@@ -82,8 +81,7 @@
         }
     }
 
-    function splitRecomendtoSell(){
-        global $arrayDataSell;
+    function splitRecomendtoSell($arrayDataSell){
         $msg1 = "";
         $msg2 = "";
         $msg3 = "";
@@ -344,7 +342,7 @@
                 array_push($arrayDataSell,$msgRecomendtoSell);
             }
         }
-        splitRecomendtoSell();
+        splitRecomendtoSell($arrayDataSell);
     }
     else echo 'Only telegram can access this url.';
 ?>
