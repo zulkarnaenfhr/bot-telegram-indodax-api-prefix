@@ -331,7 +331,7 @@
                 array_push($arrayDataBuy,$msgRecomendtoBuy);
             }
         }
-        splitRecomendtoBuy();
+        splitRecomendtoBuy($arrayDataBuy);
     }
     if ($text=="/recommend_to_sell") {
         $arrayDataSell = array();
