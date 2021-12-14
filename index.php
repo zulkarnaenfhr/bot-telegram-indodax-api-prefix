@@ -137,12 +137,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg1 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -154,12 +158,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+            
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg2 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -171,12 +179,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg3 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -188,12 +200,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+            
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg4 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -205,12 +221,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+            
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg5 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -222,12 +242,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+            
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg6 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -239,12 +263,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+            
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg7 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
@@ -256,12 +284,16 @@
             $low = $data[$asset]['low'];
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
-            if ($last == $high) {
-                $status = "Harga Tertinggi !!!";
-            }elseif($last == $low){
-                $status = "Harga terendah !!!";
+            
+            $batasAmanSell = $value['high'] * 1/100;
+            $batasAmanBuy = $value['low'] * 1/100;
+
+            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+                $status = "Recommend to Buy";
+            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+                $status = "Recommend to Sell";
             }else{
-                $status = "Harga diantara !!!";
+                $status = "Bisa menjadi Watchlist";
             }
             $msg8 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
         }
