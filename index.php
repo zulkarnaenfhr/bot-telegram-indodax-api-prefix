@@ -138,12 +138,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
 
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -159,12 +159,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
             
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -180,12 +180,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
 
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -201,12 +201,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
             
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -222,12 +222,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
             
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -243,12 +243,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
             
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -264,12 +264,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
             
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
@@ -285,12 +285,12 @@
             $sell = $data[$asset]['sell'];
             $buy = $data[$asset]['buy'];
             
-            $batasAmanSell = $value['high'] * 1/100;
-            $batasAmanBuy = $value['low'] * 1/100;
+            $batasAmanSell = $data[$asset]['high'] * 1/100;
+            $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($value['last'] - $value['low']) < $batasAmanBuy) {
+            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
                 $status = "Recommend to Buy";
-            }else if (($value['high'] - $value['last']) < $batasAmanSell){
+            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
                 $status = "Recommend to Sell";
             }else{
                 $status = "Bisa menjadi Watchlist";
