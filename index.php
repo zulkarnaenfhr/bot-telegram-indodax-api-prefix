@@ -124,7 +124,6 @@
     $konten = file_get_contents($sumber);
     $data = json_decode($konten, true);
     $data = $data['tickers'];
-    $a = 1;
     $panjangData = count($data);
 
     if ($text=="/view_indodax") {
