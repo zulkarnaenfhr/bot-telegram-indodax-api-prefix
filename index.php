@@ -14,7 +14,7 @@
         $text = $val['message']['text'];
         $update_id = $val['update_id'];
         $sender = $val['message']['from'];
-    }
+    
 ?>
 
 <?php 
@@ -120,253 +120,254 @@
 ?>
 
 <?php 
-    $sumber = "https://indodax.com/api/tickers";
-    $konten = file_get_contents($sumber);
-    $data = json_decode($konten, true);
-    $data = $data['tickers'];
-    $panjangData = count($data);
+        $sumber = "https://indodax.com/api/tickers";
+        $konten = file_get_contents($sumber);
+        $data = json_decode($konten, true);
+        $data = $data['tickers'];
+        $panjangData = count($data);
 
-    if ($text=="/view_indodax") {
-        $msg .= "Bot Developed by Kelompok API 7!%0a%0a%0a";
-        for ($i=0; $i < ($panjangData*1/8); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
+        if ($text=="/view_indodax") {
+            $msg .= "Bot Developed by Kelompok API 7!%0a%0a%0a";
+            for ($i=0; $i < ($panjangData*1/8); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
 
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg1 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg1 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*1/8))+1 ; $i < floor(($panjangData*2/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
-            
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+            for ($i= floor(($panjangData*1/8))+1 ; $i < floor(($panjangData*2/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
+                
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg2 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg2 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*2/8))+1 ; $i < floor(($panjangData*3/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
+            for ($i= floor(($panjangData*2/8))+1 ; $i < floor(($panjangData*3/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
 
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg3 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg3 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*3/8))+1 ; $i < floor(($panjangData*4/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
-            
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+            for ($i= floor(($panjangData*3/8))+1 ; $i < floor(($panjangData*4/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
+                
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg4 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg4 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*4/8))+1 ; $i < floor(($panjangData*5/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
-            
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+            for ($i= floor(($panjangData*4/8))+1 ; $i < floor(($panjangData*5/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
+                
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg5 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg5 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*5/8))+1 ; $i < floor(($panjangData*6/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
-            
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+            for ($i= floor(($panjangData*5/8))+1 ; $i < floor(($panjangData*6/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
+                
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg6 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg6 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*6/8))+1 ; $i < floor(($panjangData*7/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
-            
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+            for ($i= floor(($panjangData*6/8))+1 ; $i < floor(($panjangData*7/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
+                
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg7 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg7 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
-        }
-        for ($i= floor(($panjangData*7/8))+1 ; $i < floor(($panjangData*8/8)); $i++) { 
-            $nomor = $i+1;
-            $asset = array_keys($data)[$i];
-            $last = $data[$asset]['last'];
-            $high = $data[$asset]['high'];
-            $low = $data[$asset]['low'];
-            $sell = $data[$asset]['sell'];
-            $buy = $data[$asset]['buy'];
-            
-            $batasAmanSell = $data[$asset]['high'] * 1/100;
-            $batasAmanBuy = $data[$asset]['low'] * 1/100;
+            for ($i= floor(($panjangData*7/8))+1 ; $i < floor(($panjangData*8/8)); $i++) { 
+                $nomor = $i+1;
+                $asset = array_keys($data)[$i];
+                $last = $data[$asset]['last'];
+                $high = $data[$asset]['high'];
+                $low = $data[$asset]['low'];
+                $sell = $data[$asset]['sell'];
+                $buy = $data[$asset]['buy'];
+                
+                $batasAmanSell = $data[$asset]['high'] * 1/100;
+                $batasAmanBuy = $data[$asset]['low'] * 1/100;
 
-            if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
-                $status = "Recommend to Buy";
-            }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
-                $status = "Recommend to Sell";
-            }else{
-                $status = "Bisa menjadi Watchlist";
+                if (($data[$asset]['last'] - $data[$asset]['low']) < $batasAmanBuy) {
+                    $status = "Recommend to Buy";
+                }else if (($data[$asset]['high'] - $data[$asset]['last']) < $batasAmanSell){
+                    $status = "Recommend to Sell";
+                }else{
+                    $status = "Bisa menjadi Watchlist";
+                }
+                $msg8 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
             }
-            $msg8 .= "Nomor : ".$nomor."%0aAsset : ".$asset."%0aLast Price : ".$last."%0aHigh 24H : ".$high."%0aLow 24H : ".$low."%0aSell : ".$sell."%0aBuy : ".$buy."%0a".$status."%0a%0a";
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg1."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg2."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg3."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg4."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg5."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg6."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg7."...");
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg8."...");
         }
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg1."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg2."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg3."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg4."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg5."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg6."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg7."...");
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msg.$msg8."...");
+        if ($text=="/low_indodax") {
+            $msgStatusCoinLow = "Coin yang mengalami harga terendah : %0a";
+            $coinLowPrice = array();
+            $nomor = 0;
+            for ($i=0; $i < $panjangData; $i++) { 
+                $asset = array_keys($data)[$i];
+                $low = $data[$asset]['low'];
+                $last = $data[$asset]['last'];
+                $buy = $data[$asset]['buy'];
+                if ($last == $low) {
+                    $nomor = $nomor+1;
+                    $msgLow .= $nomor.".".$asset."%0a"."Harga Beli : ".$low."%0a";
+                }
+            }
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msgStatusCoinLow.$msgLow."...");
+        }
+        if ($text=="/start") {
+            $msgWelcome = "Selamat datang di bot Monitoring Harga Cryptocurrency, kamu dapat menyesuaikan command yang tersedia sesuai dengan kebutuhan kamu :)";
+
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msgWelcome."...");
+        }
+        if ($text=="/high_indodax") {
+            $msgStatusCoinLow = "Coin yang mengalami harga tertinggi : %0a";
+            $coinLowPrice = array();
+            $nomor = 0;
+            for ($i=0; $i < $panjangData; $i++) { 
+                $asset = array_keys($data)[$i];
+                $high = $data[$asset]['high'];
+                $last = $data[$asset]['last'];
+                $sell = $data[$asset]['sell'];
+                if ($last == $high) {  
+                    $nomor = $nomor+1;
+                    $msgHigh .= $nomor.".".$asset."%0a"."Harga Jual : ".$sell."%0a";
+                }
+            }
+            file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msgStatusCoinLow.$msgHigh."...");
+        }
+        if ($text=="/recommend_to_buy") {
+            $arrayDataBuy = array();
+            foreach ($data as $row => $value) {
+                $msgRecomendtoBuy = "";
+                $batasAmanBuy = $value['low'] * 1/100;
+
+                if ($value['last'] > 1 && ($value['last'] - $value['low']) < $batasAmanBuy) {
+                    $msgRecomendtoBuy = "Recomend to Buy :%0a".$row."%0aLast Price : ".number_format($value['last'])."%0aLow 24H : ".number_format($value['low'])."%0aBuy Price : ".number_format($value['buy'])."%0a%0a";
+                    array_push($arrayDataBuy,$msgRecomendtoBuy);
+                }
+            }
+            splitRecomendtoBuy($arrayDataBuy);
+        }
+        if ($text=="/recommend_to_sell") {
+            $arrayDataSell = array();
+            foreach ($data as $row => $value) {
+                $msgRecomendtoSell = "";
+                $batasAmanSell = $value['high'] * 1/100;
+
+                if ($value['last'] > 1 && ($value['high'] - $value['last']) < $batasAmanSell) {
+                    $msgRecomendtoSell = "Recomend to Sell :%0a".$row."%0aLast Price : ".number_format($value['last'])."%0aHigh 24H : ".number_format($value['high'])."%0aSell Price : ". number_format($value['sell'])."%0a%0a";
+                    array_push($arrayDataSell,$msgRecomendtoSell);
+                }
+            }
+            splitRecomendtoSell($arrayDataSell);
+        }
+        else echo 'Only telegram can access this url.';
     }
-    if ($text=="/low_indodax") {
-        $msgStatusCoinLow = "Coin yang mengalami harga terendah : %0a";
-        $coinLowPrice = array();
-        $nomor = 0;
-        for ($i=0; $i < $panjangData; $i++) { 
-            $asset = array_keys($data)[$i];
-            $low = $data[$asset]['low'];
-            $last = $data[$asset]['last'];
-            $buy = $data[$asset]['buy'];
-            if ($last == $low) {
-                $nomor = $nomor+1;
-                $msgLow .= $nomor.".".$asset."%0a"."Harga Beli : ".$low."%0a";
-            }
-        }
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msgStatusCoinLow.$msgLow."...");
-    }
-    if ($text=="/start") {
-        $msgWelcome = "Selamat datang di bot Monitoring Harga Cryptocurrency, kamu dapat menyesuaikan command yang tersedia sesuai dengan kebutuhan kamu :)";
-
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msgWelcome."...");
-    }
-    if ($text=="/high_indodax") {
-        $msgStatusCoinLow = "Coin yang mengalami harga tertinggi : %0a";
-        $coinLowPrice = array();
-        $nomor = 0;
-        for ($i=0; $i < $panjangData; $i++) { 
-            $asset = array_keys($data)[$i];
-            $high = $data[$asset]['high'];
-            $last = $data[$asset]['last'];
-            $sell = $data[$asset]['sell'];
-            if ($last == $high) {  
-                $nomor = $nomor+1;
-                $msgHigh .= $nomor.".".$asset."%0a"."Harga Jual : ".$sell."%0a";
-            }
-        }
-        file_get_contents($apiLink . "sendmessage?chat_id=$chat_id&text=".$msgStatusCoinLow.$msgHigh."...");
-    }
-    if ($text=="/recommend_to_buy") {
-        $arrayDataBuy = array();
-        foreach ($data as $row => $value) {
-            $msgRecomendtoBuy = "";
-            $batasAmanBuy = $value['low'] * 1/100;
-
-            if ($value['last'] > 1 && ($value['last'] - $value['low']) < $batasAmanBuy) {
-                $msgRecomendtoBuy = "Recomend to Buy :%0a".$row."%0aLast Price : ".number_format($value['last'])."%0aLow 24H : ".number_format($value['low'])."%0aBuy Price : ".number_format($value['buy'])."%0a%0a";
-                array_push($arrayDataBuy,$msgRecomendtoBuy);
-            }
-        }
-        splitRecomendtoBuy($arrayDataBuy);
-    }
-    if ($text=="/recommend_to_sell") {
-        $arrayDataSell = array();
-        foreach ($data as $row => $value) {
-            $msgRecomendtoSell = "";
-            $batasAmanSell = $value['high'] * 1/100;
-
-            if ($value['last'] > 1 && ($value['high'] - $value['last']) < $batasAmanSell) {
-                $msgRecomendtoSell = "Recomend to Sell :%0a".$row."%0aLast Price : ".number_format($value['last'])."%0aHigh 24H : ".number_format($value['high'])."%0aSell Price : ". number_format($value['sell'])."%0a%0a";
-                array_push($arrayDataSell,$msgRecomendtoSell);
-            }
-        }
-        splitRecomendtoSell($arrayDataSell);
-    }
-    else echo 'Only telegram can access this url.';
 ?>
