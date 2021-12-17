@@ -14,7 +14,6 @@
         $text = $val['message']['text'];
         $update_id = $val['update_id'];
         $sender = $val['message']['from'];
-    
 ?>
 
 <?php 
